@@ -1,0 +1,41 @@
+
+<div *ngIf="getCurrentPrice()">
+  <hr/>
+  <div>
+    <input type="button" value="Atualizar" (click)="update()"/>
+    <span>Atualizado em {{this.valorbitService.lastUpdate | date:"full"}}
+        <br><span>Atualizar em: {{timer.getCount()}}s</span>
+    </span>
+  </div>
+  <hr/>
+  <h2>Data/hora</h2>
+  <div>{{this.getCurrentPrice().time.updated}}</div>
+  <h2>Taxas</h2>
+  <h3>{{this.getCurrentPrice().bpi.BRL.description}}</h3>
+  <h4>
+    <span [innerHTML]="this.getCurrentPrice().bpi.BRL.symbol"></span>
+    {{this.getCurrentPrice().bpi.BRL.rate}}
+  </h4>
+  <h3>{{this.getCurrentPrice().bpi.BRL.description}}</h3>
+  <h4>
+    <span [innerHTML]="this.getCurrentPrice().bpi.BRL.symbol"></span>
+    {{this.getCurrentPrice().bpi.BRL.rate}}
+  </h4>
+  <h3>{{this.getCurrentPrice().bpi.BRL.description}}</h3>
+  <h4>
+    <span [innerHTML]="this.getCurrentPrice().bpi.BRL.symbol"></span>
+    {{this.getCurrentPrice().bpi.BRL.rate}}
+  </h4>
+  <hr/>
+  <table border="1">
+    <tr>
+      <th>Data/hora</th>
+      <th>BRL</th>
+
+    </tr> 
+    <tr *ngFor="let price of this.valorbitService.updateList">
+      <td>{{price.timestamp | date:"full"}}</td>
+      <td>{{price.BRL | currency}}</td>
+    </tr>
+  </table>
+</div>
